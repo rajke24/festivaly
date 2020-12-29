@@ -1,0 +1,6 @@
+export const OPEN_SUBMENU = 'OPEN_SUBMENU';
+export const CLOSE_SUBMENU = 'CLOSE_SUBMENU';
+export const OPEN_SIDEBAR = 'OPEN_SIDEBAR';
+export const CLOSE_SIDEBAR = 'CLOSE_SIDEBAR';
+export const OPEN_LOGIN_MODAL = 'OPEN_LOGIN_MODAL';
+export const CLOSE_LOGIN_MODAL = 'CLOSE_LOGIN_MODAL';

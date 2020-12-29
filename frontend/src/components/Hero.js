@@ -1,11 +1,12 @@
 import React from "react";
-import { useGlobalContext } from "../context";
+import { useDispatch } from "react-redux";
+import { closeSubmenu } from "../actions/home";
 
 const Hero = () => {
-  const { closeSubmenu } = useGlobalContext();
+  const dispatch = useDispatch();
 
   return (
-    <section className="hero" onMouseOver={closeSubmenu}>
+    <section className="hero" onMouseOver={() => dispatch(closeSubmenu())}>
       <div className="hero-center">
         <article className="hero-info">
           <h1>
@@ -20,9 +21,6 @@ const Hero = () => {
             mollitia incidunt at, velit eius error!
           </p>
           <button className="btn">Jump in</button>
-        </article>
-        <article className="hero-images">
-          {/* <img src className="phone-img" alt="phone" /> */}
         </article>
       </div>
     </section>

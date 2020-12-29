@@ -1,31 +1,40 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
-import { useGlobalContext } from "../context";
+import {
+  openSubmenu,
+  openLoginModal,
+  openSidebar,
+  closeSubmenu,
+} from "../actions/home";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  const { openSubmenu, closeSubmenu, openSidebar } = useGlobalContext();
+  const dispatch = useDispatch();
 
   const displaySubmenu = (e) => {
     const linkName = e.target.textContent;
-    const currentLink = e.target.getBoundingClientRect();
-    const bottom = currentLink.bottom - 3;
-    const center = (currentLink.left + currentLink.right) / 2;
-    openSubmenu(linkName, { bottom, center });
+    const curLink = e.target.getBoundingClientRect();
+    const center = (curLink.left + curLink.right) / 2;
+    const bottom = curLink.bottom - 3;
+    dispatch(openSubmenu(linkName, { center, bottom }));
   };
 
-  const handleSubmenu = (e) => {
+  const handleCloseSubmenu = (e) => {
     if (!e.target.classList.contains("link-btn")) {
-      closeSubmenu();
+      dispatch(closeSubmenu());
     }
   };
 
   return (
-    <nav className="nav" onMouseOver={handleSubmenu}>
+    <nav className="nav" onMouseOver={handleCloseSubmenu}>
       <div className="nav-center">
         <div className="nav-header">
           {/* <img src="" alt=""/> */}
           <h3>Logo</h3>
-          <button className="btn toggle-btn" onClick={openSidebar}>
+          <button
+            className="btn toggle-btn"
+            onClick={() => dispatch(openSidebar())}
+          >
             <FaBars />
           </button>
         </div>
@@ -47,7 +56,12 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <button className="btn signin-btn">Sign in</button>
+      <button
+        className="btn signin-btn"
+        onClick={() => dispatch(openLoginModal())}
+      >
+        Sign in
+      </button>
     </nav>
   );
 };
