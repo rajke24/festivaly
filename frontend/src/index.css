@@ -43,7 +43,7 @@ Variables
   --black-olive: hsla(34, 6%, 24%, 1);
   --eerie-black: hsla(40, 4%, 14%, 1);
   --flame: #eb6028;
-  --flame-light: #EE7D50;
+  --flame-light: #ee7d50;
 
   --transition: all 0.2s linear;
   --spacing: 0.1rem;
@@ -489,7 +489,7 @@ Modals
   color: var(--clr-white);
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
   background: var(--flame-light);
   color: var(--clr-white);
 }
@@ -506,7 +506,7 @@ hr {
   margin: 20px 0;
 }
 
-.switch-btn:hover{
+.switch-btn:hover {
   background: var(--clr-grey-6);
   color: var(--clr-white);
 }
@@ -520,4 +520,42 @@ Error messages
 div.error {
   color: #eb6028;
   font-size: 0.875rem;
+}
+
+/* 
+=================
+Error page
+================= 
+*/
+.error-page::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url(./images/hero.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.error-page {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.back-home-btn {
+  background: var(--clr-white);
+  color: var(--flame);
+  margin-top: 30px;
+  border-radius: 50px;
+  padding: 10px 20px;
 }

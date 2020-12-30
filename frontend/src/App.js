@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import PrivateRoute from "./components/common/PrivateRoute";
@@ -7,6 +7,7 @@ import { loadUser } from "./actions/auth";
 
 //import pages
 import Home from "./pages/Home";
+import Error from "./pages/Error";
 
 //import components
 import Navbar from "./components/home/Navbar";
@@ -26,6 +27,7 @@ function App() {
         <Sidebar />
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
+          <Route exact path="*" component={Error} />
         </Switch>
       </Router>
     </Provider>

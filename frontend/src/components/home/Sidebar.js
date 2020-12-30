@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom"
 import { sublinks } from "../../sublinks";
 import { useSelector, useDispatch } from "react-redux";
 import { closeSidebar } from "../../actions/home";
@@ -24,10 +25,10 @@ const Sidebar = () => {
                   {links.map((link, index) => {
                     const { url, icon, label } = link;
                     return (
-                      <a key={index} href={url}>
+                      <Link key={index} to={url} onClick={() => dispatch(closeSidebar())}>
                         {icon}
                         {label}
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>
