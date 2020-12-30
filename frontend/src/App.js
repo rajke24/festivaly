@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import PrivateRoute from "./components/common/PrivateRoute";
+import { loadUser } from "./actions/auth";
+
 //import pages
-import Home from "./pages/Home"  
+import Home from "./pages/Home";
 
 //import components
-import Navbar from "./components/Navbar"
-import Submenu from "./components/Submenu";
-import Sidebar from "./components/Sidebar";
+import Navbar from "./components/home/Navbar";
+import Submenu from "./components/home/Submenu";
+import Sidebar from "./components/home/Sidebar";
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  });
+
   return (
     <Provider store={store}>
       <Router>
@@ -18,9 +25,7 @@ function App() {
         <Submenu />
         <Sidebar />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <PrivateRoute exact path="/" component={Home} />
         </Switch>
       </Router>
     </Provider>

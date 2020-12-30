@@ -5,6 +5,8 @@ import {
   CLOSE_SUBMENU,
   CLOSE_SIDEBAR,
   CLOSE_LOGIN_MODAL,
+  OPEN_REGISTER_MODAL,
+  CLOSE_REGISTER_MODAL,
 } from "../actions/types";
 import { sublinks } from "../sublinks";
 
@@ -12,6 +14,7 @@ const initialState = {
   isSubmenuOpen: false,
   isSidebarOpen: false,
   isLoginModalOpen: false,
+  isRegisterModalOpen: false,
   page: { pageName: "", links: [] },
   location: {},
 };
@@ -52,6 +55,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoginModalOpen: false,
+      };
+    case OPEN_REGISTER_MODAL:
+      return {
+        ...state,
+        isRegisterModalOpen: true,
+      };
+    case CLOSE_REGISTER_MODAL:
+      return {
+        ...state,
+        isRegisterModalOpen: false,
       };
   }
   return state;

@@ -1,12 +1,20 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { closeSubmenu } from "../actions/home";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSubmenu, openRegisterModal } from "../../actions/home";
 
 const Hero = () => {
   const dispatch = useDispatch();
+  const isSubmenuOpen = useSelector((state) => state.home.isSubmenuOpen);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const handleCloseSubmenu = () => {
+    if (isSubmenuOpen) {
+      dispatch(closeSubmenu());
+    }
+  };
 
   return (
-    <section className="hero" onMouseOver={() => dispatch(closeSubmenu())}>
+    <section className="hero" onMouseOver={handleCloseSubmenu}>
       <div className="hero-center">
         <article className="hero-info">
           <h1>
@@ -20,7 +28,14 @@ const Hero = () => {
             aspernatur? Qui dolorum excepturi consectetur ducimus recusandae
             mollitia incidunt at, velit eius error!
           </p>
-          <button className="btn">Jump in</button>
+          {!isAuthenticated && (
+            <button
+              className="btn home-btn"
+              onClick={() => dispatch(openRegisterModal())}
+            >
+              Jump in
+            </button>
+          )}
         </article>
       </div>
     </section>

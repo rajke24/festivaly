@@ -5,6 +5,8 @@ import {
   CLOSE_SUBMENU,
   CLOSE_SIDEBAR,
   CLOSE_LOGIN_MODAL,
+  OPEN_REGISTER_MODAL,
+  CLOSE_REGISTER_MODAL,
 } from "./types";
 
 export const openSubmenu = (page, coordinates) => {
@@ -42,5 +44,18 @@ export const openLoginModal = () => {
 export const closeLoginModal = () => {
   return {
     type: CLOSE_LOGIN_MODAL,
+  };
+};
+
+export const openRegisterModal = () => {
+  return {
+    type: OPEN_REGISTER_MODAL,
+  };
+};
+
+
+export const closeRegisterModal = () => {
+  return {
+    type: CLOSE_REGISTER_MODAL,
   };
 };

@@ -42,7 +42,8 @@ Variables
   --pale-silver: hsla(38, 16%, 76%, 1);
   --black-olive: hsla(34, 6%, 24%, 1);
   --eerie-black: hsla(40, 4%, 14%, 1);
-  --flame: hsla(17, 83%, 54%, 1);
+  --flame: #eb6028;
+  --flame-light: #EE7D50;
 
   --transition: all 0.2s linear;
   --spacing: 0.1rem;
@@ -103,6 +104,9 @@ h4 {
 p {
   margin-bottom: 1.25rem;
   color: var(--floral-white);
+}
+p.black {
+  color: var(--clr-grey-2);
 }
 @media screen and (min-width: 800px) {
   h1 {
@@ -169,20 +173,23 @@ Nav Styles
 .btn {
   font-size: 1rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 50px;
   border-color: transparent;
-  color: var(--clr-white);
-  background: var(--flame);
   cursor: pointer;
   transition: var(--transition);
   outline: none;
   margin-right: 6px;
 }
-.btn:hover {
+
+.home-btn {
+  display: inline-block;
+  color: var(--clr-white);
+  background: var(--flame);
+  border-radius: 50px;
+}
+.home-btn:hover {
   background: var(--floral-white);
   color: var(--flame);
 }
-
 .nav-links {
   display: none;
 }
@@ -239,10 +246,7 @@ Nav Styles
     display: none;
     outline: none;
   }
-  .signin-btn {
-    display: inline-block;
-    outline: none;
-  }
+
   .nav-links {
     display: block;
     justify-self: center;
@@ -402,7 +406,9 @@ Nav Styles
 }
 
 /* 
+===================
 Modals 
+===================
 */
 .modal-overlay {
   position: fixed;
@@ -426,22 +432,92 @@ Modals
 .modal-container {
   background: var(--clr-white);
   border-radius: var(--radius);
-  width: 70vh;
+  width: 60vh;
   height: 90vh;
   max-width: var(--fixed-width);
   text-align: center;
   display: grid;
   position: relative;
   place-items: center;
-  color: var(--clr-grey-1);
+  color: var(--clr-grey-3);
   visibility: hidden;
   z-index: -5;
   transform: scale(0);
   transition: var(--transition);
 }
 
-.show-modal{
+.modal-container form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.modal-container input {
+  margin: 5px 0;
+  padding: 12px 6px;
+  width: 100%;
+  height: 40px;
+  border-width: 0 0 2px;
+  border-color: var(--clr-grey-7);
+}
+
+.modal-container input:focus {
+  outline: none;
+  border-color: var(--flame);
+}
+
+.show-modal {
   visibility: visible;
   transform: scale(1);
   z-index: 11;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  border-radius: 50px;
+  padding: 10px 0;
+  background: var(--flame);
+  border: 2px solid var(--flame);
+  color: var(--clr-white);
+}
+
+.submit-btn:hover{
+  background: var(--flame-light);
+  color: var(--clr-white);
+}
+.switch-btn {
+  margin-top: 10px;
+  border-radius: 50px;
+  padding: 10px 0;
+  background: var(--clr-white);
+  border: 2px solid var(--clr-grey-6);
+  color: var(--clr-grey-6);
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.switch-btn:hover{
+  background: var(--clr-grey-6);
+  color: var(--clr-white);
+}
+
+/* 
+=================
+Error messages
+================= 
+*/
+
+div.error {
+  color: #eb6028;
+  font-size: 0.875rem;
 }

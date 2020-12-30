@@ -1,8 +1,8 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import { sublinks } from "../sublinks";
+import { sublinks } from "../../sublinks";
 import { useSelector, useDispatch } from "react-redux";
-import { closeSidebar } from "../actions/home";
+import { closeSidebar } from "../../actions/home";
 
 const Sidebar = () => {
   const isSidebarOpen = useSelector((state) => state.home.isSidebarOpen);

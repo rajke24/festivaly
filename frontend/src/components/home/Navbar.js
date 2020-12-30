@@ -5,11 +5,15 @@ import {
   openLoginModal,
   openSidebar,
   closeSubmenu,
-} from "../actions/home";
-import { useDispatch } from "react-redux";
+} from "../../actions/home";
+import { logout } from "../../actions/auth";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const isSubmenuOpen = useSelector((state) => state.home.isSubmenuOpen);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const displaySubmenu = (e) => {
     const linkName = e.target.textContent;
@@ -20,7 +24,7 @@ const Navbar = () => {
   };
 
   const handleCloseSubmenu = (e) => {
-    if (!e.target.classList.contains("link-btn")) {
+    if (!e.target.classList.contains("link-btn") && isSubmenuOpen) {
       dispatch(closeSubmenu());
     }
   };
@@ -32,7 +36,7 @@ const Navbar = () => {
           {/* <img src="" alt=""/> */}
           <h3>Logo</h3>
           <button
-            className="btn toggle-btn"
+            className="btn home-btn toggle-btn"
             onClick={() => dispatch(openSidebar())}
           >
             <FaBars />
@@ -56,14 +60,24 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <button
-        className="btn signin-btn"
-        onClick={() => dispatch(openLoginModal())}
-      >
-        Sign in
-      </button>
+      {isAuthenticated ? (
+        <button className="btn home-btn" onClick={() => dispatch(logout())}>
+          Log out
+        </button>
+      ) : (
+        <button
+          className="btn home-btn"
+          onClick={() => dispatch(openLoginModal())}
+        >
+          Sign in
+        </button>
+      )}
     </nav>
   );
 };
+
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired
+}
 
 export default Navbar;
