@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'accounts',
+    'festivals',
+    'reviews',
 ]
 
 REST_FRAMEWORK = {
