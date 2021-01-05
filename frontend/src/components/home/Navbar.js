@@ -9,6 +9,7 @@ import {
 import { logout } from "../../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           {/* <img src="" alt=""/> */}
-          <h3>Logo</h3>
+          <Link to="/">
+            <h3>Logo</h3>
+          </Link>
           <button
             className="btn home-btn toggle-btn"
             onClick={() => dispatch(openSidebar())}

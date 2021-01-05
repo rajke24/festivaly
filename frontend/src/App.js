@@ -8,11 +8,13 @@ import { loadUser } from "./actions/auth";
 //import pages
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+import AllFestivals from './pages/festivals/All'
 
 //import components
 import Navbar from "./components/home/Navbar";
 import Submenu from "./components/home/Submenu";
 import Sidebar from "./components/home/Sidebar";
+import LoginModal from "./components/accounts/LoginModal";
 
 function App() {
   useEffect(() => {
@@ -25,8 +27,10 @@ function App() {
         <Navbar />
         <Submenu />
         <Sidebar />
+        <LoginModal />
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
+          <Route path="/festivals/all" component={AllFestivals} />
           <Route exact path="*" component={Error} />
         </Switch>
       </Router>
