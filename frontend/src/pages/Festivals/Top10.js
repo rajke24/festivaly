@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FestivalsList from "../../components/festivals/FestivalsList";
-import SearchBar from "../../components/festivals/SearchBar";
-import { loadFestivals } from "../../actions/festivals";
 import { closeSubmenu } from "../../actions/home";
+import { loadTopFestivals } from "../../actions/festivals";
 
-const AllFestivals = () => {
+const Top10 = () => {
   const isSubmenuOpen = useSelector((state) => state.home.isSubmenuOpen);
-  const allFestivals = useSelector((state) => state.festivals.festivals)
+  const mostPopularFestivals = useSelector((state) => state.festivals.topFestivals);
   const dispatch = useDispatch();
 
   const handleCloseSubmenu = () => {
@@ -18,15 +17,14 @@ const AllFestivals = () => {
   };
 
   useEffect(() => {
-    dispatch(loadFestivals());
+    dispatch(loadTopFestivals());
   }, []);
 
   return (
     <div className="wrapper-dark" onMouseOver={handleCloseSubmenu}>
-      <SearchBar />
-      <FestivalsList title="All Festivals" festivals={allFestivals} />
+      <FestivalsList title="Most Popular Festivals" festivals={mostPopularFestivals} />
     </div>
   );
 };
 
-export default AllFestivals;
+export default Top10;

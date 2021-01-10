@@ -3,15 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
 
 import Festival from "./Festival";
-import { loadFestivals } from "../../actions/festivals";
 
-const FestivalsList = () => {
+const FestivalsList = ({title, festivals}) => {
   const dispatch = useDispatch();
-  const { isLoading, festivals } = useSelector((state) => state.festivals);
-
-  useEffect(() => {
-    dispatch(loadFestivals());
-  }, []);
+  const isLoading  = useSelector((state) => state.festivals.isLoading);
 
   if (isLoading) {
     return (
@@ -32,7 +27,7 @@ const FestivalsList = () => {
 
   return (
     <section className="section section-black">
-      <h1 className="section-title">all festivals</h1>
+      <h1 className="section-title">{title}</h1>
       <div className="underline"></div>
       {festivals.map((festival) => {
         return (
