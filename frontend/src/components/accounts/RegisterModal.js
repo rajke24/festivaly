@@ -30,7 +30,6 @@ const RegisterModal = () => {
   const isRegisterModalOpen = useSelector(
     (state) => state.home.isRegisterModalOpen
   );
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
@@ -48,10 +47,6 @@ const RegisterModal = () => {
     dispatch(closeRegisterModal());
     dispatch(openLoginModal());
   };
-
-  if (isAuthenticated) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div

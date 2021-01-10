@@ -23,7 +23,6 @@ const validationSchema = Yup.object({
 
 const LoginModal = () => {
   const isLoginModalOpen = useSelector((state) => state.home.isLoginModalOpen);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
@@ -41,10 +40,6 @@ const LoginModal = () => {
     dispatch(closeLoginModal());
     dispatch(openRegisterModal());
   };
-
-  if (isAuthenticated) {
-    return <Redirect to="/" />;
-  }
 
   return (
     <div

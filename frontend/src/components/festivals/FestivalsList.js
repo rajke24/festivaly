@@ -15,7 +15,7 @@ const FestivalsList = () => {
 
   if (isLoading) {
     return (
-      <section className="section-center">
+      <section className="section-center" style={{marginTop: "10rem"}}>
         <Loader
           type="Audio"
           color="#fffbf0"
@@ -35,7 +35,9 @@ const FestivalsList = () => {
       <h1 className="section-title">all festivals</h1>
       <div className="underline"></div>
       {festivals.map((festival) => {
-        return <Festival key={festival.id} {...festival} />;
+        return (
+            <Festival key={festival.id} {...festival} />
+        );
       })}
     </section>
   );
