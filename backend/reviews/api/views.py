@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from reviews.models import Review, Like, Dislike
 from .serializers import ReviewSerializer, CreateReviewSerializer, LikeSerializer, DislikeSerializer
 
+
 class ReviewListAPIView(ListAPIView):
     serializer_class = ReviewSerializer
     queryset = Review.objects.all().order_by('-date_posted')
@@ -24,13 +25,16 @@ class ReviewCreateAPIView(CreateAPIView):
     queryset = Review.objects.all()
     serializer_class = CreateReviewSerializer
     permission_classes = [
-        AllowAny
+        IsAuthenticated
     ]
 
 
-class  LikeCreateAPIView(mixins.CreateModelMixin, APIView):
+class LikeCreateAPIView(mixins.CreateModelMixin, APIView):
     serializer_class = LikeSerializer
-    
+    permission_classes = [
+        IsAuthenticated
+    ]
+
     def post(self, request, format=None):
         serializer = LikeSerializer(data=request.data)
         if serializer.is_valid():
@@ -41,16 +45,19 @@ class  LikeCreateAPIView(mixins.CreateModelMixin, APIView):
                 review=review).filter(user=user)
             if like_found or dislike_found:
                 return Response(status=status.HTTP_409_CONFLICT
-                )
+                                )
             else:
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class DislikeCreateAPIView(CreateAPIView):
     serializer_class = DislikeSerializer
+    permission_classes = [
+        IsAuthenticated
+    ]
 
     def post(self, request, format=None):
         serializer = DislikeSerializer(data=request.data)

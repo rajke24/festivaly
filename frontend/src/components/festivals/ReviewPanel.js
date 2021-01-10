@@ -54,7 +54,7 @@ const ReviewPanel = ({ festival_id }) => {
   if (isLoading) {
     return (
       <section className="section-center" style={{ marginTop: "3rem" }}>
-        <Loader type="TailSpin" color="#fffbf0" height="80" width="80" />;
+        <Loader type="TailSpin" color="#fffbf0" height="80" width="80" />
       </section>
     );
   }

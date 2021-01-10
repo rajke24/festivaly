@@ -11,6 +11,8 @@ import {
   USER_ALREADY_LIKED,
 } from "./types";
 
+import { tokenConfig } from "./auth"
+
 export const loadFestivalReviews = (festivalId) => (dispatch) => {
   dispatch({ type: FESTIVAL_REVIEWS_LOADING})
 
@@ -27,12 +29,8 @@ export const loadFestivalReviews = (festivalId) => (dispatch) => {
     });
 };
 
-export const createReview = (review) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const createReview = (review) => async (dispatch, getState) => {
+  const config = tokenConfig(getState);
 
   const body = JSON.stringify({ ...review });
 
@@ -47,12 +45,8 @@ export const createReview = (review) => async (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const addLike = (like) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const addLike = (like) => async (dispatch, getState) => {
+  const config = tokenConfig(getState);
 
   const body = JSON.stringify({ ...like });
 
@@ -75,8 +69,6 @@ export const addLike = (like) => async (dispatch) => {
 };
 
 export const loadLikes = (festivalId) => async (dispatch) => {
-  
-  
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -94,12 +86,8 @@ export const loadLikes = (festivalId) => async (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const addDislike = (dislike) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+export const addDislike = (dislike) => async (dispatch, getState) => {
+  const config = tokenConfig(getState);
 
   const body = JSON.stringify({ ...dislike });
 
