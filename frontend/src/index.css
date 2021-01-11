@@ -67,8 +67,7 @@ Global Styles
   box-sizing: border-box;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Titillium Web", sans-serif;
   background: #000;
   color: var(--floral-white);
   line-height: 1.5;
@@ -149,7 +148,7 @@ p.black {
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
   text-align: center;
@@ -621,11 +620,11 @@ SINGLE LIST ELEMENT
 }
 .single-element .image-container:hover img {
   -webkit-filter: brightness(40%);
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  -ms-transition: all .5s ease;
-  transition: all .5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .single-element img {
@@ -642,7 +641,7 @@ SINGLE LIST ELEMENT
   background: transparent;
   border: 3px solid #fff;
   color: #fff;
-  padding: 20px 32px 16px 32px;
+  padding: 24px 32px 16px 32px;
   opacity: 0;
   position: absolute;
   top: 50%;
@@ -802,9 +801,100 @@ REVIEW
   cursor: pointer;
 }
 .social-btn.not-allowed:hover {
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 .social-icon {
   font-size: 1.25rem;
   margin-bottom: 5px;
+}
+/* 
+SINGLE FESTIVAL PAGE 
+*/
+.festival-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.festival-info {
+  width: 50%;
+  height: 100%;
+  padding: 75px 80px;
+  display: flex;
+  position: relative;
+  flex-flow: wrap;
+  flex-direction: column;
+}
+.festival-image {
+  width: 50%;
+  height: 80vh;
+}
+.festival-image img {
+  margin-top: 40px;
+  width: 100%;
+  height: 72vh;
+}
+.back-arrow {
+  margin-left: 10px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+}
+.back-arrow span {
+  font-size: 16px;
+  margin-left: 10px;
+  margin-top: 3px;
+  font-weight: 900;
+  position: relative;
+}
+.back-arrow-icon {
+  font-size: 2rem;
+  transform: translateX(0px);
+  transition: 0.3s all;
+}
+.back-arrow:hover .back-arrow-icon {
+  transform: translateX(-10px);
+}
+.festival-description {
+  margin-top: 65px;
+  padding-right: 40px;
+}
+.festival-categories {
+  padding-top: 32px;
+}
+
+@media screen and (max-width: 1200px) {
+  .festival-wrapper {
+    display:flex;
+    flex-direction: column;
+  }
+  .festival-info {
+    width: 100%;
+    height: auto;
+    padding: 75px 40px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    order: 2;
+  }
+  .festival-image {
+    width: 100%;
+    height: 90vh;
+    order: 1;
+  }
+  .festival-image img {
+    margin-top: 0;
+    width: 100%;
+    height: 90vh;
+  }
+  .back-arrow {
+    margin-top: 20px;
+  }
+  .festival-description {
+    margin-top: 65px;
+  }
+  .festival-categories {
+    padding-top: 10px;
+  }
 }
