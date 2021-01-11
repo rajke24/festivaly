@@ -5,8 +5,8 @@ class Festival(models.Model):
     country = models.CharField(max_length=150)
     city = models.CharField(max_length=150)
     description = models.TextField(default="Sorry, no description available yet. We are working on it :)")
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
     category = models.CharField(max_length=150)
     img_url = models.URLField(default="https: // bigseventravel.com/wp-content/uploads/2019/10/def.jpg")
     
