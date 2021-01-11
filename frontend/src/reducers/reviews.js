@@ -17,7 +17,20 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case FESTIVAL_REVIEWS_LOADING:
+      return {
+        ...state,
+        festivalReviewsLoading: true,
+      };
     case FESTIVAL_REVIEWS_LOADED:
+      const reviewsLoaded = action.payload
+      let found = reviewsLoaded.length > 0 && state.festivalReviews.some(item => item.id === reviewsLoaded[0].id )
+
+      if (found) {
+          return {
+          ...state,
+          festivalReviewsLoading: false
+      }}
       return {
         ...state,
         festivalReviews: [...state.festivalReviews, ...action.payload],
@@ -39,20 +52,37 @@ const reducer = (state = initialState, action) => {
         dislikes: [...state.dislikes, action.payload],
       };
     case LIKES_LOADED:
-      return {
+      const likesLoaded = action.payload;
+      found =
+        likesLoaded.length > 0 &&
+        state.likes.some((item) => item.id === likesLoaded[0].id);
+
+      if (found) {
+        return {
           ...state,
-          likes: [...state.likes, ...action.payload]
+          festivalReviewsLoading: false,
+        };
       }
+      return {
+        ...state,
+        likes: [...state.likes, ...action.payload],
+      };
     case DISLIKES_LOADED:
-      return {
+      const dislikesLoaded = action.payload;
+      found =
+        dislikesLoaded.length > 0 &&
+        state.dislikes.some((item) => item.id === dislikesLoaded[0].id);
+
+      if (found) {
+        return {
           ...state,
-          dislikes: [...state.dislikes, ...action.payload]
+          festivalReviewsLoading: false,
+        };
       }
-    case FESTIVAL_REVIEWS_LOADING:
       return {
-          ...state,
-          festivalReviewsLoading: true,
-      }
+        ...state,
+        dislikes: [...state.dislikes, ...action.payload],
+      };
     default:
       return state;
   }

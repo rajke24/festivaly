@@ -17,7 +17,7 @@ const initialValues = {
 const validationSchema = Yup.object({
   username: Yup.string().required("Username is required"),
   password: Yup.string()
-    .required("Field required")
+    .required("Password is required")
     .min(6, "Password must be at least 6 characters")
 });
 
@@ -31,9 +31,10 @@ const LoginModal = () => {
     }
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, {resetForm}) => {
     dispatch(login(values));
     dispatch(closeLoginModal());
+    resetForm();
   };
 
   const switchToRegister = () => {

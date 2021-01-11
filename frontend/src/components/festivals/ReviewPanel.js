@@ -22,6 +22,8 @@ const ReviewPanel = ({ festival_id }) => {
   );
 
   const addReview = (festival, author, content, rating) => {
+    setText("");
+    setRating(0);
     dispatch(
       createReview({
         festival,
@@ -30,8 +32,6 @@ const ReviewPanel = ({ festival_id }) => {
         rating,
       })
     );
-    setText("");
-    setRating(0);
   };
 
   const handleSubmit = (e) => {

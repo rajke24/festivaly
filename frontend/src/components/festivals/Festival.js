@@ -13,7 +13,7 @@ const Festival = ({ id, name, description, img_url, reviews, rating }) => {
   const [reviewsBtnClicked, setReviewsBtnClicked] = useState(false);
 
   const dispatch = useDispatch();
-
+  
   const handleReviewsClick = () => {
     if (!reviewsBtnClicked) {
       dispatch(loadFestivalReviews(id));
