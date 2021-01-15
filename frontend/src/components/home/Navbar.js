@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="nav" onMouseOver={handleCloseSubmenu}>
+    <nav className="nav" onMouseOver={handleCloseSubmenu} style={{background: "#000"}}>
       <div className="nav-center">
         <div className="nav-header">
           {/* <img src="" alt=""/> */}

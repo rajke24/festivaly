@@ -24,7 +24,7 @@ const Review = ({ id, author, content, date_posted, rating, author_name }) => {
 
   const dispatch = useDispatch();
   const checkAuthor = () => {
-    if (!isNaN(author) && isAuthenticated) {
+    if (!author_name) {
       return user.username;
     }
     return author_name;

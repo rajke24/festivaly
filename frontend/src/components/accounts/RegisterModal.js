@@ -38,8 +38,9 @@ const RegisterModal = () => {
     }
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, {resetForm}) => {
     dispatch(register(values));
+    resetForm();
     dispatch(closeRegisterModal());
   };
 

@@ -5,18 +5,22 @@ import {
   FESTIVAL_DETAILED_LOADED,
   TOP_FESTIVALS_LOADED,
   TOP_FESTIVALS_LOAD_FAIL,
+  SINGLE_FESTIVAL_LOADING,
+  FESTIVALS_FROM_YEAR_LOADED
 } from "../actions/types";
 
 const initialState = {
   isLoading: false,
   festivals: [],
   topFestivals: [],
+  festivalsFromYear: [],
   detailedFestival: {},
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FESTIVALS_LOADING:
+    case SINGLE_FESTIVAL_LOADING:
       return {
         ...state,
         isLoading: true,
@@ -44,7 +48,14 @@ const reducer = (state = initialState, action) => {
     case FESTIVAL_DETAILED_LOADED:
       return {
         ...state,
+        isLoading: false,
         detailedFestival: action.payload,
+      };
+    case FESTIVALS_FROM_YEAR_LOADED:
+      return {
+        ...state,
+        isLoading: false,
+        festivalsFromYear: action.payload,
       };
     default:
       return state;

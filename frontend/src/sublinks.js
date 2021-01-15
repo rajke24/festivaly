@@ -6,7 +6,7 @@ export const sublinks = [
         links: [
             {label: 'all', icon: <FaStarOfLife />, url: '/festivals/all'},
             {label: 'most popular', icon: <FaMedal />, url: '/festivals/top'},
-            {label: 'calendar', icon: <FaCalendarAlt />, url: '/festivals/most-popular'},
+            {label: 'calendar', icon: <FaCalendarAlt />, url: '/festivals/calendar'},
         ]
     },
     {

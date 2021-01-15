@@ -11,6 +11,7 @@ import Error from "./pages/Error";
 import AllFestivals from "./pages/festivals/All";
 import SingleFestival from "./pages/festivals/SingleFestival";
 import Top10Festivals from "./pages/festivals/Top10";
+import FestivalsCalendar from "./pages/festivals/Calendar"
 
 //import components
 import Navbar from "./components/home/Navbar";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/festivals/all" component={AllFestivals} />
           <Route path="/festivals/top" component={Top10Festivals} />
           <Route path="/festivals/festival/:id" component={SingleFestival} />
+          <Route path="/festivals/calendar" component={FestivalsCalendar} />
           <Route exact path="*" component={Error} />
         </Switch>
       </Router>

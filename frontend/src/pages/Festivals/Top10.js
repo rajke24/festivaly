@@ -21,7 +21,7 @@ const Top10 = () => {
   }, []);
 
   return (
-    <div className="wrapper-dark" onMouseOver={handleCloseSubmenu}>
+    <div className="wrapper-dark" onMouseOver={handleCloseSubmenu} style={{paddingTop: "2rem"}}>
       <FestivalsList title="Most Popular Festivals" festivals={mostPopularFestivals} />
     </div>
   );

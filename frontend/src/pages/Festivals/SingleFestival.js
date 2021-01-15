@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CgArrowLongLeft } from "react-icons/cg";
-import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 import { loadFestival } from "../../actions/festivals";
 import { closeSubmenu } from "../../actions/home";
@@ -11,6 +11,7 @@ const SingleFestival = () => {
   const festival = useSelector((state) => state.festivals.detailedFestival);
   const dispatch = useDispatch();
   const isSubmenuOpen = useSelector((state) => state.home.isSubmenuOpen);
+  const isLoading = useSelector((state) => state.festivals.isLoading);
   const history = useHistory();
 
   const handleCloseSubmenu = () => {
@@ -19,18 +20,24 @@ const SingleFestival = () => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <section className="section-center" style={{ marginTop: "10rem" }}>
+        <Loader type="Audio" color="#fffbf0" height="150" width="150" />;
+      </section>
+    );
+  }
+
   return (
     <div className="festival-wrapper" onMouseOver={handleCloseSubmenu}>
       <div className="festival-info">
         <div className="back-arrow" onClick={() => history.goBack()}>
-          <CgArrowLongLeft className="back-arrow-icon" />
+          <CgArrowLongLeft className="arrow-icon" />
           <span>back</span>
         </div>
         <h1>{festival.name}</h1>
         <h4 style={{ marginLeft: "6px" }}>
-          {`${festival.start_date}`.substring(0, 10) +
-            " - " +
-            `${festival.end_date}`.substring(0, 10)}
+          {`${festival.start_date}` + " - " + `${festival.end_date}`}
         </h4>
         <h4
           style={{ marginLeft: "6px", fontWeight: "300" }}
